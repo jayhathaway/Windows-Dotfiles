@@ -11,7 +11,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		args = { "/mnt/c/Program Files/PowerShell/7/pwsh.exe", "-NoLogo" },
 		cwd = "/mnt/c/Users/Jay",
 	})
-	
+
 	-- Find installed visual studio version(s) and add their compilation
 	-- environment command prompts to the menu
 	for _, vsvers in ipairs(wezterm.glob("Microsoft Visual Studio/20*", "C:/Program Files (x86)")) do
@@ -105,7 +105,7 @@ table.insert(profiles, {
 })
 
 config.color_scheme = "Dracula"
-config.window_background_opacity = 0.55
+config.window_background_opacity = 0.65
 config.win32_system_backdrop = "Acrylic"
 config.launch_menu = launch_menu
 config.keys = keys
