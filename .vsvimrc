@@ -1,2 +1,17 @@
 set relativenumber
 :set vsvim_hidemarks=<>[]^.'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+"Keymaps"
+
+let mapleader = " "
+"normal mode keymaps"
+nnoremap <leader>e :vsc View.SolutionExplorer<cr>
+"pane switching"
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+"visual mode keykmaps"
+vnoremap J :vsc Edit.MoveSelectedLinesDown<cr>
+vnoremap K :vsc Edit.MoveSelectedLinesUp<cr>
