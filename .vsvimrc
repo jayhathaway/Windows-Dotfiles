@@ -11,7 +11,14 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-
+"tab cycling  "
+nnoremap <tab> :vsc Window.NextDocumentWindow<cr>
+nnoremap <S-tab> :vsc Window.PreviousDocumentWindow<cr>
 "visual mode keykmaps"
 vnoremap J :vsc Edit.MoveSelectedLinesDown<cr>
 vnoremap K :vsc Edit.MoveSelectedLinesUp<cr>
+
+"code actions"
+nnoremap <leader>gd :vsc Edit.GoToDefinition<cr>
+nnoremap <leader>gr :vsc Edit.GoToReference<cr>
+nnoremap <leader>ca :vsc View.QuickActions<cr>
