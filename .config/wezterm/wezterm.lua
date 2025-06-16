@@ -11,17 +11,25 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		args = { "/mnt/c/Program Files/PowerShell/7/pwsh.exe", "-NoLogo" },
 		cwd = "/mnt/c/Users/Jay",
 	})
+	table.insert(launch_menu, {
+		label = "Developer PowerShell",
+		args = {
+			"/mnt/c/WINDOWS/system32/WindowsPowershell/v1.0/Powershell.exe",
+			'-NoExit -Command "&{Import-Module """C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll"""; Enter-VsDevShell 41044d1a -SkipAutomaticLocation -DevCmdArguments """-arch=x64 -host_arch=x64"""}"',
+		},
+		cwd = "/mnt/c/Users/Jay",
+	})
 
 	-- Find installed visual studio version(s) and add their compilation
 	-- environment command prompts to the menu
-	for _, vsvers in ipairs(wezterm.glob("Microsoft Visual Studio/20*", "C:/Program Files (x86)")) do
+	for _, vsvers in ipairs(wezterm.glob("Microsoft Visual Studio/20*", "C:/Program Files")) do
 		local year = vsvers:gsub("Microsoft Visual Studio/", "")
 		table.insert(launch_menu, {
 			label = "x64 Native Tools VS " .. year,
 			args = {
 				"cmd.exe",
 				"/k",
-				"C:/Program Files (x86)/" .. vsvers .. "/BuildTools/VC/Auxiliary/Build/vcvars64.bat",
+				"C:/Program Files/" .. vsvers .. "/Community/VC/Auxiliary/Build/vcvars64.bat",
 			},
 		})
 	end
