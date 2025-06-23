@@ -4,12 +4,12 @@ local config = wezterm.config_builder()
 local mouse_bindings = {}
 local launch_menu = {}
 local profiles = {}
-
+--[[ 
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	table.insert(launch_menu, {
 		label = "PowerShell",
-		args = { "/mnt/c/Program Files/PowerShell/7/pwsh.exe", "-NoLogo" },
-		cwd = "/mnt/c/Users/Jay",
+		args = { "C\\Program Files\\PowerShell\\7\\pwsh.exe", "-NoLogo" },
+		cwd = "C\\Users\\Jay",
 	})
 	table.insert(launch_menu, {
 		label = "Developer PowerShell",
@@ -19,7 +19,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		},
 		cwd = "/mnt/c/Users/Jay",
 	})
-
+  
 	-- Find installed visual studio version(s) and add their compilation
 	-- environment command prompts to the menu
 	for _, vsvers in ipairs(wezterm.glob("Microsoft Visual Studio/20*", "C:/Program Files")) do
@@ -34,6 +34,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		})
 	end
 end
+]]
 
 local function is_vim(pane)
 	-- this is set by the plugin, and unset on ExitPre in Neovim
@@ -97,7 +98,9 @@ keys = {
 	},
 }
 
-config.default_domain = "WSL:Ubuntu-24.04"
+--config.default_domain = "WSL:Ubuntu-24.04"
+config.default_domain = "local"
+config.default_prog = { "pwsh.exe", "-NoLogo" }
 config.leader = {
 	key = "b",
 	mods = "CTRL",
